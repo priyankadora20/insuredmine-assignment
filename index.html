@@ -7,148 +7,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="style.css">
     <title>INSURED MIND</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-        }
-
-        #sidebar {
-            height: 100vh;
-            width: 250px;
-            position: fixed;
-            background: #282727;
-            padding-top: 15px;
-            color: #fff;
-        }
-
-        .sidebar-btn {
-            display: block;
-            width: 100%;
-            padding: 7px;
-            text-decoration: none;
-            color: #fff;
-            background: #282727;
-            border: none;
-            text-align: justify;
-            padding-left: 2rem;
-        }
-
-        .sidebar-btn:hover {
-            background: linear-gradient(90deg, #ec764a 5%, #989895 5%);
-            color: black;
-            cursor: pointer;
-        }
-
-        #logo {
-            border: #989895;
-            width: 80%;
-            margin-bottom: 10px;
-        }
-
-        #sidebar-icon {
-            font-style: normal;
-        }
-
-        #content {
-            margin-left: 250px;
-            padding: 20px;
-        }
-
-        #contact-content {
-            display: block;
-           
-        }
-        .modal.right .modal-dialog {
-            position: fixed;
-            top: 0;
-            right: 0;
-            margin:auto;
-            width:450px;
-            height:100%;
-            transform: translate3d(0%, 0, 0);
-
-        }
-
-        .modal.right .modal-content {
-            height: 100%;
-            border-radius: 0;
-            overflow-y: auto;
-        }
-
-        .modal-body-inside{
-            width: auto;
-
-
-        }
-        .modal-title{
-            font-weight: bold;
-        }
-
-        form {
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 16px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #3498db;
-            color: #fff;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #2980b9;
-        }
-        input,textarea{
-        width: 100%;   
-        padding: 12px 20px;
-        box-sizing: border-box;
-        border: 2px solid #ccc;
-        border-radius: 4px;
-        background-color: #f8f8f8;  
-        }
-        label{
-            color:#595959;
-            font-weight:500;
-
-        }
-        #cancel{
-            background-color:transparent;
-            border-color: #595959;
-              color:#595959;
-              font-weight: bold;
-
-        }
-        #send{
-            background-color: #ec764a;
-            font-weight: bold;
-            color: white;
-            padding: 7px 20px;
-            border-radius: 4px;
-
-
-        }
-
-    </style>
 </head>
 
 <body>
@@ -198,97 +61,145 @@
 
             </nav>
 
-            <!-- Page Content -->
-            <div id="content">
-                <h2>Main Content</h2>
-                <!-- Content of your main page goes here -->
-
-                <div id="contact-content">
-                    <p>Contact information goes here...</p>
-                </div>
-
-                <div id="mail-content">
-
-
-                    <div class="container mt-5">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Open Modal</button>
-                    
-                        <!-- Modal -->
-                        <div class="modal fade right" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="myModalLabel">Send email</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <div class="modal-body-inside">
-
-                                            <form action="/submit" method="post">
-
-                                                <label for="template">Template </label>
-                                                <input type="" id="template" name="template" required placeholder="Select template">
-                                            
-                                                <label for="signature">Signature</label>
-                                                <input type="" id="signature" name="signature" required placeholder="Select Signature">
-
-                                                <label for="to">To</label>
-                                                <input type="email" id="to" name="name" required placeholder="jackson.graham@example.com">
-
-                                                <label for="subject">Subject</label>
-                                                <input type="text" id="subject" name="name" required placeholder="Email Subject">
-
-                                                
-                                                <label for="message">Message</label>
-                                                <textarea id="message" name="message" rows="4" required></textarea>
-
-                                                <label for="file">Choose a file:</label>
-                                                <input type="file" id="file" name="file" accept=".pdf, .doc, .docx">
-
-
-                                                <div class="modal-footer">
-                                                <button type="submit" id="send">Send</button>
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancel">Cancel</button>
-                                                </div>
-                                               
-                                            </form>
-
-                                        </div>
-
-                                       
-
-                                    </div>
-                                   
+           <!-- First navbar-->
+            <div id="content" class="d-flex justify-content-between align-items-center">
+                <!-- Right side: Search bar -->
+                <input type="search" name="" id="Navbar-search" placeholder="Smart Search">
+            
+                <!-- Left side: Mail popup and icons -->
+                <div id="mail-content" class="d-flex align-items-center">
+            
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="btn-modal"><i class="bi bi-envelope-at-fill" id="btn-mail"></i>
+</button>
+            
+                    <!-- Modal -->
+                    <div class="modal fade right" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="myModalLabel">Send email</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
+                                <div class="modal-body">
+                    
+                                    <div class="modal-body-inside">
+                    
+                                        <form action="/submit" method="post">
+                    
+                                            <label for="template">Template </label>
+                                            <input type="" id="template" name="template" required placeholder="Select template">
+                    
+                                            <label for="signature">Signature</label>
+                                            <input type="" id="signature" name="signature" required placeholder="Select Signature">
+                    
+                                            <label for="to">To</label>
+                                            <input type="email" id="to" name="name" required placeholder="jackson.graham@example.com">
+                    
+                                            <label for="subject">Subject</label>
+                                            <input type="text" id="subject" name="name" required placeholder="Email Subject">
+                    
+                    
+                                            <label for="message">Message</label>
+                                            <textarea id="message" name="message" rows="4" required></textarea>
+                    
+                                            <label for="file">Choose a file:</label>
+                                            <input type="file" id="file" name="file" accept=".pdf, .doc, .docx">
+                    
+                    
+                                            <div class="modal-footer">
+                                                <button type="submit" id="send">Send</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                                    id="cancel">Cancel</button>
+                                            </div>
+                    
+                                        </form>
+                    
+                                    </div>
+                    
+                    
+                    
+                                </div>
+                    
                             </div>
                         </div>
                     </div>
 
+            
+                    <div><i class="bi bi-chat-square-text-fill"></i></div>
+                    <div><i class="bi bi-bell-fill"></i></div>
+                    <div><img src="https://www.shutterstock.com/image-vector/vector-flat-illustration-grayscale-avatar-600nw-2264922221.jpg" alt=""></div>
+            
                 </div>
+            </div>
+            <!-- 2nd navbar-->
+            
+            <div id="Navbar-secound">
+
+                <h5>Contact</h5>
+                <p>&gt;</p>
+                <p>Madilyn</p>
+
+            </div>
+
+            <!-- Inside content-->
+
+            <div id="Inside-content">
+                <!-- Inside content section left -->
+                <div id="Inside-content-section-left">
+                    
+                    <div id="Inside-personal-info">
+                        <div id="Inside-personal-id" >
+                            <h5>Madilyn</h5>
+                            <p id="active">Active</p>
+
+                        </div>
+                        <div id="Inside-personal-infos">
+                            <div>
+                                <p>Company</p>
+                                <p>Gender</p>
+                                <p>Date of birth</p>
+                                <p>Phone</p>
+                                <p>Email</p>
+                                <p>Address</p>
+                            
+                            </div>
+
+                            <div>
+                                <p>Olivander's Wand</p>
+                                <p>Female</p>
+                                <p>12/23/86</p>
+                                <p>(316) 555-0116</p>
+                                <p>georgiayoung@example.com</p>
+                                <p>19091 Northeast 23rd Street</p>
+                            </div>
+
+                        </div>
+                       
+                       
+                    </div>
+
+
+                    <div id="Inside-content-section-right"></div>
+
+                </div>
+
+                <!-- Inside content section right -->
+                <div id="Inside-content-section-right">
+                    <div></div>
+                </div>
+
+            </div>
+        
+           
 
             </div>
         </div>
     </div>
 
-    <script>
-        function openPage(page) {
-            // Add logic to navigate to the corresponding page
-            if (page === 'contact') {
-                 alert('You are at ' + page + ' only.');
-            }if (page === 'work-email') {
-                alert('You are at ' + page + ' only.');
-            }  
-            else {
-                alert('Navigating to ' + page + ' page.');
-                alert('Sorry this ' + page + ' page is underconstruction');
-            }
-        }
-    </script>
-
+    <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

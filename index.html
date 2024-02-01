@@ -5,11 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">    
+ 
     <link rel="stylesheet" href="style.css">
     <title>INSURED MINE</title>
 </head>
@@ -64,7 +61,7 @@
            <!-- First navbar-->
             <div id="content" class="d-flex justify-content-between align-items-center">
                 <!-- Right side: Search bar -->
-                <input type="search" name="" id="Navbar-search" placeholder="Smart Search">
+                <input type="search" name="" id="Navbar-search" placeholder="&#128269;Smart Search">
             
                 <!-- Left side: Mail popup and icons -->
                 <div id="mail-content" class="d-flex align-items-center">
@@ -103,12 +100,32 @@
                     
                     
                                             <label for="message">Message</label>
-                                            <textarea id="message" name="message" rows="4" required></textarea>
+                                            <!-- added text editor -->
+                                            <div id="editor-container">
+                                                <div id="editor-toolbar">
+                                                  <button onclick="formatText('bold')"><b>B</b></button>
+                                                  <button onclick="formatText('italic')"><i>I</i></button>
+                                                  <button onclick="formatText('underline')"><u>U</u></button>
+                                                  <button onclick="formatText('insertOrderedList')">&#35;</button>
+                                                  <button onclick="formatText('insertUnorderedList')">&#8226;</button>
+                                                  <button onclick="createLink()">&#x1F517;</button>
+                                                  <button onclick="undo()">&#8630;</button>
+                                                  <button onclick="redo()">&#8631;</button>
+                                                </div>
+                                                <div id="editor" contenteditable="true"></div>
+                                              </div>
+                    <!-- ENd of the text editor -->
+
+                    <!-- Choose a file -->
+
+                    <div id="drop-zone" onclick="openFileInput()" ondragover="handleDragOver(event)" class="mt-2" ondrop="handleDrop(event)">
+                        <div id="file-icon">📁</div>
+                        <div>Drop your file here or click to upload</div>
+                        <input type="file" id="file-input" onchange="handleFileSelect(this)">
+                      </div>
                     
-                                            <label for="file">Choose a file:</label>
-                                            <input type="file" id="file" name="file" accept=".pdf, .doc, .docx">
                     
-                    
+                                            <!-- End of the Choose file -->
                                             <div class="modal-footer">
                                                 <button type="submit" id="send">Send</button>
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
@@ -191,7 +208,7 @@
 
                         <hr class="my-2" >
 
-                        <div class="d-flex text-center w-320">
+                        <div class="d-flex text-center w-320 flex-wrap">
                             <div > 
                                 <div class="h-32 p-3 m-2 border rounded">
                                     <i class="bi bi-journals fs-6"></i>
@@ -238,8 +255,183 @@
                             </div>
                         </div>
                        
+                        
                        
                     </div>
+
+
+                    <!-- Col -->
+                    <div class="container mt-4">
+                        <div id="accordion">
+                    
+                            <!-- Organization -->
+                            <div class="card">
+                                <div class="card-header" id="headingOrganization">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" style="color: #01151A; font-weight: bold;" data-toggle="collapse"
+                                            data-target="#collapseOrganization" aria-expanded="true" aria-controls="collapseOrganization">
+                                            <i class="bi bi-caret-right-fill"></i>Organization
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseOrganization" class="collapse show" aria-labelledby="headingOrganization"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <!-- Content for Organization -->
+                                        <!-- Add your content here -->
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <!-- Other -->
+                            <div class="card">
+                                <div class="card-header" id="headingOther">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" style="color: #01151A; font-weight: bold;" data-toggle="collapse"
+                                            data-target="#collapseOther" aria-expanded="true" aria-controls="collapseOther">
+                                            <i class="bi bi-caret-right-fill"></i> Other
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseOther" class="collapse" aria-labelledby="headingOther" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <!-- Content for Other -->
+                                        <!-- Add your content here -->
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <!-- Custom Data -->
+                            <div class="card">
+                                <div class="card-header" id="headingCustomData">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" style="color: #01151A; font-weight: bold;" data-toggle="collapse"
+                                            data-target="#collapseCustomData" aria-expanded="true" aria-controls="collapseCustomData">
+                                            <i class="bi bi-caret-right-fill"></i> Custom Data
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseCustomData" class="collapse" aria-labelledby="headingCustomData" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <!-- Content for Custom Data -->
+                                        <!-- Add your content here -->
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <!-- Tags -->
+                            <div class="card">
+                                <div class="card-header" id="headingTags">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" style="color: #01151A; font-weight: bold;" data-toggle="collapse"
+                                            data-target="#collapseTags" aria-expanded="true" aria-controls="collapseTags">
+                                            <i class="bi bi-caret-right-fill"></i>Tags
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTags" class="collapse" aria-labelledby="headingTags" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <!-- Content for Tags -->
+                                        <!-- Add your content here -->
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <!-- Linked Contacts -->
+                            <div class="card">
+                                <div class="card-header" id="headingLinkedContacts">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" style="color: #01151A; font-weight: bold;" data-toggle="collapse"
+                                            data-target="#collapseLinkedContacts" aria-expanded="true"
+                                            aria-controls="collapseLinkedContacts">
+                                            <i class="bi bi-caret-right-fill"></i>Linked Contacts
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseLinkedContacts" class="collapse" aria-labelledby="headingLinkedContacts"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <!-- Content for Linked Contacts -->
+                                        <!-- Add your content here -->
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <!-- Intake Form -->
+                            <div class="card">
+                                <div class="card-header" id="headingIntakeForm">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" style="color: #01151A; font-weight: bold;" data-toggle="collapse"
+                                            data-target="#collapseIntakeForm" aria-expanded="true" aria-controls="collapseIntakeForm">
+                                            <i class="bi bi-caret-right-fill"></i> Intake Form
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseIntakeForm" class="collapse" aria-labelledby="headingIntakeForm" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <!-- Content for Intake Form -->
+                                        <!-- Add your content here -->
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <!-- House -->
+                            <div class="card">
+                                <div class="card-header" id="headingHouse">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" style="color: #01151A; font-weight: bold;" data-toggle="collapse"
+                                            data-target="#collapseHouse" aria-expanded="true" aria-controls="collapseHouse">
+                                            <i class="bi bi-caret-right-fill"></i>House
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseHouse" class="collapse" aria-labelledby="headingHouse" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <!-- Content for House -->
+                                        <!-- Add your content here -->
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <!-- Vehicles -->
+                            <div class="card">
+                                <div class="card-header" id="headingVehicles">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" style="color: #01151A; font-weight: bold;" data-toggle="collapse"
+                                            data-target="#collapseVehicles" aria-expanded="true" aria-controls="collapseVehicles">
+                                            <i class="bi bi-caret-right-fill"></i> Vehicles
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseVehicles" class="collapse" aria-labelledby="headingVehicles" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <!-- Content for Vehicles -->
+                                        <!-- Add your content here -->
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <!-- Family -->
+                            <div class="card">
+                                <div class="card-header" id="headingFamily">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" style="color: #01151A; font-weight: bold;" data-toggle="collapse"
+                                            data-target="#collapseFamily" aria-expanded="true" aria-controls="collapseFamily">
+                                            <i class="bi bi-caret-right-fill"></i>Family
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseFamily" class="collapse" aria-labelledby="headingFamily" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <!-- Content for Family -->
+                                        <!-- Add your content here -->
+                                    </div>
+                                </div>
+                            </div>
+                    
+                        </div>
+                    </div>
+                    
                     
                    
 
@@ -251,106 +443,95 @@
                     
                         
                         <div class="container" id="container-list">
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#" data-toggle="tab">Policies</a>
+                            <ul class="nav nav-underline">
+                                <li class="nav-item fs-3 text-muted-black d-flex align-items-center">
+                                    <a class="nav-link" aria-current="page">Policies</a>
+                                    <span class="badge rounded-pill text-bg-secondary fs-6">2</span>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" data-toggle="tab">Notes</a>
+                                <li class="nav-item fs-3 text-muted-black d-flex align-items-center">
+                                    <a class="nav-link" aria-current="page">Notes</a>
+                                    <span class="badge rounded-pill text-bg-secondary">1</span>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" data-toggle="tab">Communication</a>
+                                <li class="nav-item active d-flex align-items-center">
+                                    <a class="nav-link"aria-current="page">Communication</a>
+                                    <span class="badge rounded-pill text-bg-secondary">6</span>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" data-toggle="tab">Files</a>
+                                <li class="nav-item fs-3 text-muted-black d-flex align-items-center">
+                                    <a class="nav-link" aria-current="page">Files</a>
+                                    <span class="badge rounded-pill text-bg-secondary">3</span>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" data-toggle="tab">Tasks</a>
+                                <li class="nav-item fs-3 text-muted-black d-flex align-items-center">
+                                    <a class="nav-link" aria-current="page">Tasks</a>
+                                    <span class="badge rounded-pill text-bg-secondary">4</span>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" data-toggle="tab">Activities</a>
+                                <li class="nav-item fs-3 text-muted-black d-flex align-items-center">
+                                    <a class="nav-link"  aria-current="page">Activities</a>
+                                    <span class="badge rounded-pill text-bg-secondary">5</span>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" data-toggle="tab">Timeline</a>
+                                <li class="nav-item fs-3 text-muted-black ">
+                                    <a class="nav-link" aria-current="page">Timeline</a>
+                                 
                                 </li>
                             </ul>
+
+                         
 
                         </div>
 
                  
                         <div class="container ml-3">
                             <div id="accordion">
+                                <!-- Accordion Item 1 -->
                                 <div class="card mt-4 p-1">
-                                    <div id="headingOne">
-                                        <div class="d-flex p-3">
-                                            <p class="medium mt-3 font-weight-bold" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                                                aria-controls="collapseOne">
-                                                <i class="bi bi-caret-down-fill"></i>
-                                                Automatic Email
-                                            </p>
-                                            <p class="smaller-font mt-3 ml-3" style="color:#697173; ">
-                                                Scheduled for 09/26/2020 as a part of
-                                            </p>
-                                            <p class="smaller-font Orange mt-3 ml-1">
-                                                Say Happy Birthday Automation
-                                            </p>
-
-                                            <i class="bi bi-toggle-on mt-2 pl-3 ml-5" style="font-size: 30px; color:#F68A1F; "></i>
-                                            
-
-                                        </div>
+                                  <div id="headingOne">
+                                    <div class="d-flex p-3" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                      <p class="medium mt-3 font-weight-bold">
+                                        <i class="bi bi-caret-down-fill"></i>
+                                        Automatic Email
+                                      </p>
+                                      <p class="smaller-font mt-3 ml-3" style="color:#697173;">Scheduled for 09/26/2020 as a part of</p>
+                                      <p class="smaller-font Orange mt-3 ml-1">Say Happy Birthday Automation</p>
+                                      <i class="bi bi-toggle-on mt-2 pl-3 ml-5" style="font-size: 30px; color:#F68A1F;"></i>
                                     </div>
-                        
-                                    <div id="collapseTwo" class="collapse show"  aria-labelledby="headingOne" data-parent="#accordion">
-                                        <div class="card-body">
-                                            <p style="color:#697173; font-weight:500;">Subject: <p>Happy Birthday!</p> </p>
-                                            <p class="text-sm mt-3">
-                                                Looking started he up perhaps against. How remainder all additions get elsewhere resources. One
-                                                missed shy wishes supply design answer formed.
-                                                Prevent on present hastily passage an subject in be. Be happiness arranging so newspaper
-                                                defective affection ye. Families blessing he in to no daughter.
-                                            </p>
-                                        </div>
+                                  </div>
+                              
+                                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
+                                    <div class="card-body">
+                                      <p style="color:#697173; font-weight:500;">Subject: <p>Happy Birthday!</p></p>
+                                      <p class="text-sm mt-3">
+                                        Looking started he up perhaps against. How remainder all additions get elsewhere resources. One missed shy wishes supply design answer formed. Prevent on present hastily passage an subject in be. Be happiness arranging so newspaper defective affection ye. Families blessing he in to no daughter.
+                                      </p>
                                     </div>
+                                  </div>
                                 </div>
-
+                              
+                                <!-- Accordion Item 2 -->
                                 <div class="card mt-4 p-1">
-                                    <div id="headingOne">
-                                        <div class="d-flex p-3">
-                                            <p class="medium mt-3 font-weight-bold" data-toggle="collapse" data-target="#collapseOne"
-                                                aria-expanded="true" aria-controls="collapseOne">
-                                                <i class="bi bi-caret-down-fill"></i>
-                                                Automatic Email
-                                            </p>
-                                            <p class="smaller-font mt-3 ml-3" style="color:#697173; ">
-                                                Scheduled for 09/26/2020 as a part of
-                                            </p>
-                                            <p class="smaller-font Orange mt-3 ml-1">
-                                                Say Happy Birthday Automation
-                                            </p>
-                                
-                                            <i class="bi bi-toggle-on mt-2 pl-3 ml-5" style="font-size: 30px; color:#F68A1F; "></i>
-                                
-                                
-                                        </div>
+                                  <div id="headingTwo">
+                                    <div class="d-flex p-3" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                      <p class="medium mt-3 font-weight-bold">
+                                        <i class="bi bi-caret-down-fill"></i>
+                                        Automatic Email
+                                      </p>
+                                      <p class="smaller-font mt-3 ml-3" style="color:#697173;">Scheduled for 09/26/2020 as a part of</p>
+                                      <p class="smaller-font Orange mt-3 ml-1">Say Happy Birthday Automation</p>
+                                      <i class="bi bi-toggle-on mt-2 pl-3 ml-5" style="font-size: 30px; color:#F68A1F;"></i>
                                     </div>
-                                
-                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                        <div class="card-body">
-                                            <p style="color:#697173; font-weight:500;">Subject:
-                                            <p>Happy Birthday!</p>
-                                            </p>
-                                            <p class="text-sm mt-3">
-                                                Looking started he up perhaps against. How remainder all additions get elsewhere resources. One
-                                                missed shy wishes supply design answer formed.
-                                                Prevent on present hastily passage an subject in be. Be happiness arranging so newspaper
-                                                defective affection ye. Families blessing he in to no daughter.
-                                            </p>
-                                        </div>
+                                  </div>
+                              
+                                  <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo">
+                                    <div class="card-body">
+                                      <p style="color:#697173; font-weight:500;">Subject:
+                                      <p>Happy Birthday!</p>
+                                      </p>
+                                      <p class="text-sm mt-3">
+                                        Looking started he up perhaps against. How remainder all additions get elsewhere resources. One missed shy wishes supply design answer formed. Prevent on present hastily passage an subject in be. Be happiness arranging so newspaper defective affection ye. Families blessing he in to no daughter.
+                                      </p>
                                     </div>
+                                  </div>
                                 </div>
-                            </div>
-                            
+                              </div>
+                              
                         </div>
 
 
@@ -361,6 +542,8 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

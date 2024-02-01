@@ -67,6 +67,14 @@ $ npm start          // run it locally
 
 ---
 
+![Alt text](image-2.png)
+
+---
+
+![Alt text](image-3.png)
+
+---
+
 # Thank you for your time 
 
 -   Thank you for using this application
